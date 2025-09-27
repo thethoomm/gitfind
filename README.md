@@ -41,6 +41,59 @@ Para executar este projeto localmente, siga os passos abaixo.
 * npm
 * Git
 
+## Como rodar
+
+### 1. Clonar o Repositório
+
+Primeiro, clone este repositório para a sua máquina local:
+
+```bash
+git clone [https://github.com/seu-usuario/gitfind.git](https://github.com/thethoomm/gitfind.git)
+cd gitfind
+```
+
+### 2. Configurar o Backend (API Principal)
+
+O backend é responsável por buscar os dados das APIs do GitHub, GitLab e Bitbucket.
+
+```bash
+# Navegue até a pasta da API
+cd api
+
+# Instale as dependências
+npm install
+
+# Crie um arquivo de variáveis de ambiente .env na raiz da pasta 'api'
+# Pode ser necessário adicionar variáveis, consulto no .env.example
+# Exemplo:
+# PORTT=porta_da_api
+
+# Inicie o servidor de desenvolvimento da API
+npm start
+```
+
+### 3. Configurar o Frontend
+
+Com o backend rodando, configure e inicie a interface do usuário.
+
+```bash
+# Em um novo terminal, navegue até a pasta do frontend
+# Se estiver no gitfind/api, use cd ../app
+cd app
+
+# Instale as dependências
+npm install
+
+# Crie um arquivo .env na raiz da pasta 'app' para definir a URL da sua API
+# Exemplo:
+# VITE_GITFIND_API_URL=http://localhost:5000
+
+# Inicie a aplicação React
+npm run build
+npm run preview
+```
+
+
 ## 👨‍💻 Equipe
 
 Este projeto foi concebido e desenvolvido por:
