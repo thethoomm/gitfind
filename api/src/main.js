@@ -2,11 +2,17 @@ import "dotenv/config";
 import express from "express";
 import chalk from "chalk";
 import boxen from "boxen";
+import cors from "cors";
 import * as SearchController from "./controllers/search.controller.js";
 
-const app = express();
-
 const PORT = process.env.PORT || 3000;
+
+const app = express();
+app.use(
+  cors({
+    origin: "*",
+  }),
+);
 
 app.get("/search", SearchController.findProfile);
 

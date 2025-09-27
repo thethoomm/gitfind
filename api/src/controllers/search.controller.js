@@ -1,4 +1,5 @@
 import { StatusCodes } from "http-status-codes";
+import * as GithubService from "../services/github.service.js";
 
 export async function findProfile(req, res) {
   const { q: username } = req.query;
@@ -11,12 +12,20 @@ export async function findProfile(req, res) {
   }
 
   try {
-    res.send("Usuário: ", username);
+    const githubProfile = await GithubService.findUser(username);
+
+    res.status(StatusCodes.OK).json({
+      profiles: {
+        github: githubProfile,
+        gitlab: null,
+        bitbucket: null,
+      },
+    });
   } catch (error) {
     console.error("Erro ao procurar perfil: ", error);
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       message: "Ocorreu um erro interno no servidor",
     });
-    throw error;
+    return;
   }
 }
