@@ -5,7 +5,7 @@ import { UserInfo } from "./components/user-info";
 export function App() {
   const [isPending, startTransition] = useTransition();
   const [username, setUsername] = useState("");
-  const [profiles, setProfiles] = useState([]);
+  const [profile, setProfile] = useState();
 
   function handleSearchUserInfo(event) {
     // Se o username === null: toast
@@ -14,7 +14,7 @@ export function App() {
     startTransition(async () => {
       const foundProfiles = await findProfiles(username);
 
-      setProfiles(foundProfiles);
+      setProfile(foundProfiles);
     });
   }
 
@@ -28,7 +28,7 @@ export function App() {
         Buscar Agora
       </button>
 
-      {isPending ? "Carregando..." : <UserInfo profiles={profiles} />}
+      {isPending ? "Carregando..." : <UserInfo profile={profile} />}
     </div>
   );
 }

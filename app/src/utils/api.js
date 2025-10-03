@@ -8,7 +8,7 @@ export async function findProfiles(username) {
 
     const data = await response.json();
 
-    return data.profiles;
+    return data.profile;
   } catch (error) {
     console.error("Erro na requisição á API Gitfind", error);
   }
