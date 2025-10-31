@@ -17,14 +17,33 @@ export async function findUser(username) {
       };
     }
 
+    const repos = await getRepositories(username)
+
     return {
       found: true,
       login: data.login,
       name: data.name,
       avatar: data.avatar_url,
+      repos: repos
     };
   } catch (error) {
-    console.error(`Erro ao buscar no GitHub: ${username} - `, error.message);
+    console.error(`Erro ao buscar usuário no GitHub: ${username} - `, error.message);
+    throw new Error("Erro com a API do GitHub");
+  }
+}
+
+
+async function getRepositories(username) {
+  try {
+    const response = await fetch(`${GITHUB_API_URL}/users/${username}/repos`, {
+      method: "GET",
+    });
+
+    const data = await response.json();
+
+    return data
+  } catch (error) {
+    console.error(`Erro ao buscar repositórios no GitHub: ${username} - `, error.message);
     throw new Error("Erro com a API do GitHub");
   }
 }
