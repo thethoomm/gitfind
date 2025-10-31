@@ -28,15 +28,16 @@ async function aggregateProfiles(username) {
     };
   }
 
-  const primaryProfile =
-    profiles.github || profiles.gitlab || profiles.bitbucket;
+  const allRepos = []
+  allRepos.push(...profiles.github.repos)
 
   return {
     found: true,
-    name: primaryProfile.name,
-    login: primaryProfile.login,
-    avatar: primaryProfile.avatar,
+    name: profiles.github.name || profiles.gitlab.name || profiles.bitbucket.name,
+    login: profiles.github.login || profiles.gitlab.login || profiles.bitbucket.login,
+    avatar: profiles.github.avatar || profiles.gitlab.avatar || profiles.bitbucket.avatar,
     platforms: foundPlatforms,
+    repos: allRepos
   };
 }
 
