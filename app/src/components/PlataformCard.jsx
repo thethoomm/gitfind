@@ -7,21 +7,21 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const platformConfig = {
   github: {
-    name: "GitHub",
+    name: "github",
     icon: Github,
     color: "text-github",
     bgColor: "bg-github",
     baseUrl: "https://github.com"
   },
   gitlab: {
-    name: "GitLab", 
+    name: "gitlab", 
     icon: GitBranch,
     color: "text-gitlab",
     bgColor: "bg-gitlab",
     baseUrl: "https://gitlab.com"
   },
   bitbucket: {
-    name: "Bitbucket",
+    name: "bitbucket",
     icon: Zap,
     color: "text-bitbucket", 
     bgColor: "bg-bitbucket",
@@ -125,7 +125,7 @@ export const PlatformCard = ({ platform, userProfile, isLoading, error }) => {
         <div className="flex items-start gap-4">
           <Avatar className="h-16 w-16">
             <AvatarImage src={userProfile.avatar} alt={userProfile.name} />
-            <AvatarFallback>{userProfile.name.charAt(0)}</AvatarFallback>
+            <AvatarFallback>{userProfile.name ? userProfile.name.charAt(0) : ''}</AvatarFallback>
           </Avatar>
           
           <div className="flex-1 min-w-0">
@@ -143,29 +143,12 @@ export const PlatformCard = ({ platform, userProfile, isLoading, error }) => {
                   <span>{userProfile.location}</span>
                 </div>
               )}
-              <div className="flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
-                <span>Desde {new Date(userProfile.createdAt).getFullYear()}</span>
-              </div>
+
             </div>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="text-center">
-            <div className="text-lg font-semibold">{userProfile.followers}</div>
-            <div className="text-xs text-muted-foreground">Seguidores</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-semibold">{userProfile.following}</div>
-            <div className="text-xs text-muted-foreground">Seguindo</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-semibold">{userProfile.publicRepos}</div>
-            <div className="text-xs text-muted-foreground">Repositórios</div>
-          </div>
-        </div>
+
 
         {/* Repositories */}
         {userProfile.repositories.length > 0 && (
