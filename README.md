@@ -31,6 +31,16 @@ O projeto é construído sobre uma arquitetura simples.
 ### 3. APIs Externas
 * Utiliza as APIs públicas e oficiais do **GitHub**, **GitLab** e **Bitbucket** como fontes de dados.
 
+
+## 🌐 Endpoints da API
+
+A API Principal expõe os seguintes endpoints para consumo do frontend. Todos os endpoints são prefixados pela URL base definida no frontend (ex: `http://localhost:5000`).
+
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `GET` | `/search?username=[nome_do_usuario]` | **Busca Unificada:** Retorna um objeto agregado com dados do perfil do usuário no GitHub, GitLab e Bitbucket. |
+
+
 ## 🚀 Começando
 
 Para executar este projeto localmente, siga os passos abaixo.
