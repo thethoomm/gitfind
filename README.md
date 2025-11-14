@@ -16,6 +16,7 @@ O GitFind é uma ferramenta poderosa projetada para centralizar a busca por perf
 ## 🛠️ Arquitetura do Projeto
 
 O projeto é construído sobre uma arquitetura simples.
+![Descrição da Arquitetura do GitFind](./gitfind_image.png)
 
 ### 1. Frontend
 * Desenvolvido com **React 19**.
